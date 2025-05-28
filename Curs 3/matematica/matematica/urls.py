@@ -19,9 +19,11 @@ from django.urls import path
 
 #import al viewurilor
 from factorial.views import factorial_view, factorial_template_view
+from inmultire.views import inmultire_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('factorial/<n>/', factorial_view), #definire rutelor
-    path('template/<n>', factorial_template_view)
+    path('template/<n>', factorial_template_view),
+    path('inmultire/<num>', inmultire_view),
 ]
