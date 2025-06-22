@@ -20,6 +20,7 @@ def valideaza_cnp(cnp:str):
     
     an = int(cnp[1:3])
     today=datetime.now()
+    
     if gen in (5,6) and (2000 + an) > today.year:
         return False
     
