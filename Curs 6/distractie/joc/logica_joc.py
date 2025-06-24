@@ -5,10 +5,21 @@ class Optiuni(enum.Enum):
     Rock = 1
     Paper = 2
     Scissor = 3
+    Lizard = 4
+    Spock = 5
 
     def __str__(self):
         return self.name
     
+    @classmethod
+    def values(cls):
+        return [op.value for op in Optiuni]
+    
+    @classmethod
+    def pairs(cls):
+        return [(op.name, op.value) for op in Optiuni]
+
+print(Optiuni.values())
 # ales = Optiuni(3)
 # print(ales)
 
