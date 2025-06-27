@@ -39,13 +39,51 @@ def create_application(app_name="test_app", project_name="test_project"):
     CREATE_APP_CMD = f"{python_command} manage.py startapp {app_name}"
     subprocess.call(CREATE_APP_CMD, shell=True)
 
-
-
-if __name__ == "__main__":
-    #print(os.getcwd())
+def _add_app_to_installed_apps(app_name="test_app", project_name="test_project"):
+    cwd = os.getcwd() #cwd = current working directory
+    print("Inainte de a schimba path-ul", cwd)
+    os.chdir(os.path.join(cwd, project_name))
+    print("Dupa schimbarea path-ului", os.getcwd())
     
-    create_project()
-    time.sleep(3)
-    create_application()
+    cwd = os.getcwd()
+    os.chdir(os.path.join(cwd, project_name))
+    print("Dupa schimbarea path-ului", os.getcwd())
+    
+    with open("settings.py", "r") as freader:
+        settings_content = freader.readlines()
+        print(settings_content)
+    
+    has_encounter_installed_apps = False
+    for index, line in enumerate(settings_content):
+        if "INSTALLED_APPS = [" in line:
+            has_encounter_installed_apps = True
+            print("has encounter")
+        elif has_encounter_installed_apps and ("]" in line):
+            settings_content.insert(index, f"\t'{app_name}',\n")
+            break
+    
+    print("\n".join(settings_content))   
+         
+    with open("settings.py", "w") as fwriter:
+        fwriter.writelines(settings_content)
+        
+def demo_enumerate():
+    lista_mea = ["Maria", "Ion", "Gheorge", "Vasile"]
+    for index, element in enumerate(lista_mea):
+        print(index, element)
+        if element == "Gheorge":
+            lista_mea.insert(index, "Florina")
+            break
+    print(lista_mea)
+        
+if __name__ == "__main__":
+    
+    #print(os.getcwd())
+    demo_enumerate()
+    # create_project()
+    # time.sleep(3)
+    # create_application()
+    
+    #_add_app_to_installed_apps()
     
     #delete_project()
