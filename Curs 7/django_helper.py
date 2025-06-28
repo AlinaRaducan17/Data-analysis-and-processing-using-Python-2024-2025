@@ -117,12 +117,12 @@ if __name__ == "__main__":
     
     #print(os.getcwd())
     #demo_enumerate()
-    # create_project()
+    #create_project("ecommerce")
     # time.sleep(3)
-    # create_application()
+    #create_application("blog", "ecommerce")
     #_create_templates_folder()
-    #_create_app_url_file()
-    #_add_app_to_installed_apps()
+    _create_app_url_file("blog", "ecommerce")
+    #_add_app_to_installed_apps("blog", "ecommerce")
     
-    _link_app_in_project_url_file()
+    #_link_app_in_project_url_file()
     #delete_project()
