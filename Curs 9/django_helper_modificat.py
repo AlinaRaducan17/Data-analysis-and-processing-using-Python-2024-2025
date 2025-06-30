@@ -367,6 +367,8 @@ def main_interactive():
 if __name__ == "__main__":
     # verifica daca exista django_config.yaml
     ## TODO: get path of current file - DONE - to be tested
+    
+    
     folder_parent = Path(__file__).parent.resolve()
     os.chdir(folder_parent)
 
